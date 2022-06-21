@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\GroupUser;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        $this->call([
+            GroupSeeder::class,
+            UserSeeder::class,
+        ]);
+
+        GroupUser::factory()->create(['user_id'=> 2 , 'group_id' => 2 , 'expired_at'=>now()]);
+        GroupUser::factory()->create(['user_id'=> 1 , 'group_id' => 2 , 'expired_at'=>now()]);
+        GroupUser::factory()->create(['user_id'=> 1 , 'group_id' => 1 , 'expired_at'=>now('+6')]);
     }
 }

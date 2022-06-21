@@ -9,5 +9,6 @@ class GroupUser extends Model
 {
     use HasFactory;
     protected $table = 'group_user';
+    protected $dates = ['expired_at'];
     public $timestamps = false;
 }
